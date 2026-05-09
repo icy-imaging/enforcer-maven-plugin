@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 @Named("validateVersion")
 public class ValidateVersion extends AbstractEnforcerRule {
     @Inject
-    private MavenProject project;
+    MavenProject project;
 
     /**
      * Enforces a valid version number format for the Maven project.

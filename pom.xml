@@ -22,17 +22,17 @@
     <inceptionYear>2025</inceptionYear>
 
     <scm>
-        <url>https://gitlab.pasteur.fr/bia/icy/maven/enforcer</url>
+        <url>https://gitlab.pasteur.fr/bia/icy/maven/enforcer-maven-plugin</url>
         <tag>v${project.version}</tag>
     </scm>
 
     <issueManagement>
         <system>GitLab Issues</system>
-        <url>https://gitlab.pasteur.fr/bia/icy/maven/enforcer/-/issues</url>
+        <url>https://gitlab.pasteur.fr/bia/icy/maven/enforcer-maven-plugin/-/issues</url>
     </issueManagement>
     <ciManagement>
         <system>GitLab CI</system>
-        <url>https://gitlab.pasteur.fr/bia/icy/maven/enforcer/-/pipelines</url>
+        <url>https://gitlab.pasteur.fr/bia/icy/maven/enforcer-maven-plugin/-/pipelines</url>
     </ciManagement>
 
     <organization>
@@ -81,30 +81,36 @@
         <license.licenseName>GNU LGPLv3</license.licenseName>
         <license.copyrightOwners>Institut Pasteur</license.copyrightOwners>
 
+        <maven-core.version>3.9.15</maven-core.version>
+        <org.apache.maven.maven-core.version>${maven-core.version}</org.apache.maven.maven-core.version>
 
-        <maven.version>3.9.14</maven.version>
-        <maven-enforcer.version>3.6.2</maven-enforcer.version>
+        <enforcer-api.version>3.6.2</enforcer-api.version>
+        <org.apache.maven.enforcer.enforcer-api.version>${enforcer-api.version}</org.apache.maven.enforcer.enforcer-api.version>
+
         <javax.inject.version>1</javax.inject.version>
+        <javax.inject.javax.inject.version>${javax.inject.version}</javax.inject.javax.inject.version>
+
         <sisu-maven-plugin.version>1.0.0</sisu-maven-plugin.version>
+        <org.eclipse.sisu.sisu-maven-plugin.version>${sisu-maven-plugin.version}</org.eclipse.sisu.sisu-maven-plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-core</artifactId>
-            <version>${maven.version}</version>
+            <version>${org.apache.maven.maven-core.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.enforcer</groupId>
             <artifactId>enforcer-api</artifactId>
-            <version>${maven-enforcer.version}</version>
+            <version>${org.apache.maven.enforcer.enforcer-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
-            <version>${javax.inject.version}</version>
+            <version>${javax.inject.javax.inject.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -114,7 +120,7 @@
             <plugin>
                 <groupId>org.eclipse.sisu</groupId>
                 <artifactId>sisu-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>${org.eclipse.sisu.sisu-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>generate-index</id>
