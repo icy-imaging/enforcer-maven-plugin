@@ -26,18 +26,47 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.regex.Pattern;
 
+/**
+ * Validates the version number of a Maven project to ensure it conforms to specified patterns.
+ * <p>
+ * This rule is applied during the build process to enforce consistent version formatting
+ * and to prevent invalid versions from being used in the project.
+ * <p>
+ * A valid version must match one of the following patterns:
+ * <ul>
+ *     <li>Stable release: X.X.X</li>
+ *     <li>Alpha release: X.X.X-a.X</li>
+ *     <li>Beta release: X.X.X-b.X</li>
+ *     <li>Release candidate: X.X.X-rc.X</li>
+ * </ul>
+ * <p>
+ * Additionally, the version can optionally include a "-SNAPSHOT" suffix for snapshot builds.
+ * <p>
+ * If the project's version does not comply with any of the specified patterns, an error will
+ * be logged and an {@link EnforcerRuleException} will be thrown to halt the build process.
+ * If the version ends with "-SNAPSHOT", a warning is logged to notify the user.
+ */
 @Named("validateVersion")
 public class ValidateVersion extends AbstractEnforcerRule {
     @Inject
     MavenProject project;
 
     /**
+     * Default constructor.
+     */
+    public ValidateVersion() {
+        super();
+    }
+
+    /**
      * Enforces a valid version number format for the Maven project.
      * A valid version must match one of the following patterns:
-     * - Stable release: X.X.X
-     * - Alpha release: X.X.X-a.X
-     * - Beta release: X.X.X-b.X
-     * - Release candidate: X.X.X-rc.X
+     * <ul>
+     *     <li>Stable release: X.X.X</li>
+     *     <li>Alpha release: X.X.X-a.X</li>
+     *     <li>Beta release: X.X.X-b.X</li>
+     *     <li>Release candidate: X.X.X-rc.X</li>
+     * </ul>
      * Optionally, the version can also have a suffix of "-SNAPSHOT" for snapshot builds.
      * <p>
      * If the version does not conform to any of the above patterns, an error is logged, and an
