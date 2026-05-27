@@ -12,7 +12,7 @@
 
     <groupId>fr.icy.maven</groupId>
     <artifactId>enforcer-maven-plugin</artifactId>
-    <version>1.0.0-a.7-SNAPSHOT</version>
+    <version>1.0.0-a.7</version>
 
     <packaging>jar</packaging>
 
