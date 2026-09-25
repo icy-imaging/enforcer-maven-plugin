@@ -78,6 +78,7 @@ public class ValidateVersion extends AbstractEnforcerRule {
     public void execute() throws EnforcerRuleException {
         final String version = project.getVersion();
         final Pattern pattern = Pattern.compile("^\\d+\\.\\d+\\.\\d+(-(a|b|rc)\\.\\d+)?(-SNAPSHOT)?$");
+        getLog().debug("Checking version number: " + version);
         if (!pattern.matcher(version).matches()) {
             getLog().error("Invalid version number: " + version);
             getLog().error("The version number should match one of the patterns below:");
